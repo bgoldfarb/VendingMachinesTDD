@@ -10,13 +10,32 @@ NOTE: The temptation here will be to create Coin objects that know their value. 
 */
 
 
-//nickels are 21.21mm, 5g
+
+trueNickelSize = 21.21
+trueNickelWeight= 5
+
+trueDimeSize = 17.91
+trueDimeWeight = 2.268
+
+trueQuarterWeight = 5.670
+trueQuarterSize = 24.26;
+
 
 var acceptCoin = {
     isNickel: function(nickelSize, nickelWeight) {
-      return (nickelSize === 21.21 && nickelWeight === 5 ? true : false);
+      return (nickelSize === trueNickelSize && nickelWeight === trueNickelWeight ? true : false);
+    },
+    isDime: function(dimeSize, dimeWeight){
+        return  (dimeSize === trueDimeSize && dimeWeight === trueDimeWeight ? true : false);
+    },
+    isQuarter: function(quarterSize, quarterWeight){
+        return  (quarterSize === trueQuarterSize && quarterWeight === trueQuarterWeight ? true : false);
+    },
+    isAcceptableCoin: function(coinSize, coinWeight){
+        return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize,coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight) )
     }
-    
+
+
 };
 
 module.exports = acceptCoin;
