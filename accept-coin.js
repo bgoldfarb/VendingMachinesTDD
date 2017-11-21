@@ -13,12 +13,17 @@ NOTE: The temptation here will be to create Coin objects that know their value. 
 
 trueNickelSize = 21.21
 trueNickelWeight= 5
+trueNickelValue = 0.05
 
 trueDimeSize = 17.91
 trueDimeWeight = 2.268
+trueDimeValue = 0.10
 
 trueQuarterWeight = 5.670
 trueQuarterSize = 24.26;
+trueQuarterValue = 0.25
+
+runningTotal = 0;
 
 
 var acceptCoin = {
@@ -34,8 +39,14 @@ var acceptCoin = {
     isAcceptableCoin: function(coinSize, coinWeight){
         return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize,coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight) )
     }
-
-
 };
 
-module.exports = acceptCoin;
+var addUpCoins = {
+
+    
+
+  
+
+}
+
+module.exports = acceptCoin, addUpCoins;
