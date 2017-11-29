@@ -9,43 +9,24 @@ var determineCoin = require('./accept-coin');
 var quarterValue = 0.25
 var dimeValue = 0.10
 var nickelValue = 0.05  
+var rejectedCoinsBin = []
 
 
 var addUpCoins = {
     determineCoinSum: function(coins){
-
         if(coins.length > 0){
-        var quarterArray = map(coins, function(i){
-            if(i === quarterValue){
+        var coinArray = map(coins, function(i){
+            if(i === quarterValue || i === dimeValue || i === nickelValue){
                 return i
             }
-            else{
+            else {
                 return 0;
             }
         })
-        var dimeArray = map(coins, function(i){
-            if(i === dimeValue){
-                return i
-            }
-            else{
-                return 0;
-            }
-        })
-        var nickelArray = map(coins, function(i){
-            if(i === nickelValue){
-                return i
-            }
-            else{
-                return 0;
-            }
-        })
-
-var sumArray = quarterArray.concat(dimeArray).concat(nickelArray)
 
 var filteredSumArray = filter(sumArray, function(item){
     return item != 0;
 })
-
 var sum = reduce(filteredSumArray, function(sum, order){
     return sum + order;
 }, 0)
@@ -58,7 +39,7 @@ var sum = reduce(filteredSumArray, function(sum, order){
 
 }
 
-//addUpCoins.determineCoinSum([0.25, .05, .10, 0.10, 0.25])
+addUpCoins.determineCoinSum([0.25, .05, .10, 0.10, 0.25, 0.01])
 // var hi = addUpCoins.determineCoinSum([])
 // console.log(hi)
 

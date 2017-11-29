@@ -7,6 +7,15 @@ var dimeValue = "";
 var nickelValue = "";
 var totalValue = "";
 
+
+var quarter = {
+    value: 0.25,
+    weight: 5.670,
+    size: 24.26
+}
+
+
+
 var coinsToBeInserted = [0.25, .05, .10, 0.10, 0.25]
 var coinsToBeInsertedWithBadCoins= [0.25, .01, .01, 1.00, .10, 0.10, 0.25, .05]
 var noCoinsToBeInserted = []

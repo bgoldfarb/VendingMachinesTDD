@@ -23,6 +23,8 @@ var trueQuarterWeight = 5.670
 var trueQuarterSize = 24.26;
 var trueQuarterValue = 0.25
 
+var rejectedCoins = []
+
 
 
 var acceptCoin = {
@@ -39,5 +41,6 @@ var acceptCoin = {
         return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize,coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight) )
     }
 };
+
 
 module.exports = acceptCoin;
