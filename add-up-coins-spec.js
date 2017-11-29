@@ -2,13 +2,19 @@
 var expect = require('chai').expect;
 
 var addUpCoins = "";
-var quarter = "";
-var dime = "";
-var nickel = "";
-var total = "";
+var quarterValue = "";
+var dimeValue = "";
+var nickelValue = "";
+var totalValue = "";
 
+var coinsToBeInserted = [0.25, .05, .10, 0.10, 0.25]
+var coinsToBeInsertedWithBadCoins= [0.25, .01, .01, 1.00, .10, 0.10, 0.25, .05]
+var noCoinsToBeInserted = []
+
+
+describe('All tests', () => {
 beforeEach(function(){
-    addUpCoins = require('./accept-coin');
+    addUpCoins = require('./add-up-coins');
     quarterValue = 0.25;
     dimeValue = .10;
     nickelValue = .5;
@@ -25,13 +31,30 @@ describe('add-up-coin-exists', function() {
 
 
 describe('Coin Sum Functionality', function() {
-    it('should add up coins', function() {
-       coin1 = quarterValue;
-       coin2 = dimeValue;
-       coin3 = dimeValue;
-       total = 0.45
-        totalValue = addUpCoins.addCoins(coin1, coin2, coin3)
-        expect(totalValue).to.be.equal.to(total)
-
+    it('should determine what coins have been inserted and sum values', function() {
+     var coinSum = addUpCoins.determineCoinSum(coinsToBeInserted)
+     expect(coinSum).to.be.equal(0.75)
     });
+
+    it('should ignore bad coins and give correct sum', function(){
+        var coinSum = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+        expect(coinSum).to.be.equal(0.75)
+    })
+    it('should add  coins to the running sum', function(){
+        var coinSum = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+        var coinSum2 = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+        var coinSum3 = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+        var totalSum = coinSum+coinSum2+coinSum3
+        expect(totalSum).to.be.equal(2.25)
+    })
+
+    it('should display, insert coin when no coins are inserted', function(){
+        var coinString = addUpCoins.determineCoinSum(noCoinsToBeInserted)
+        expect(coinString).to.be.equal("INSERT COIN")
+    })
+
+    
+
 });
+
+})

@@ -1,0 +1,23 @@
+{
+  "name": "vendingmachinetdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "accept-coin-spec.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgoldfarb/VendingMachinesTDD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgoldfarb/VendingMachinesTDD/issues"
+  },
+  "homepage": "https://github.com/bgoldfarb/VendingMachinesTDD#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0"
+  }
+}

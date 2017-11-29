@@ -11,19 +11,18 @@ NOTE: The temptation here will be to create Coin objects that know their value. 
 
 
 
-trueNickelSize = 21.21
-trueNickelWeight= 5
-trueNickelValue = 0.05
+var trueNickelSize = 21.21
+var trueNickelWeight= 5
+var trueNickelValue = 0.05
 
-trueDimeSize = 17.91
-trueDimeWeight = 2.268
-trueDimeValue = 0.10
+var trueDimeSize = 17.91
+var trueDimeWeight = 2.268
+var trueDimeValue = 0.10
 
-trueQuarterWeight = 5.670
-trueQuarterSize = 24.26;
-trueQuarterValue = 0.25
+var trueQuarterWeight = 5.670
+var trueQuarterSize = 24.26;
+var trueQuarterValue = 0.25
 
-runningTotal = 0;
 
 
 var acceptCoin = {
@@ -41,12 +40,4 @@ var acceptCoin = {
     }
 };
 
-var addUpCoins = {
-
-    
-
-  
-
-}
-
-module.exports = acceptCoin, addUpCoins;
+module.exports = acceptCoin;
