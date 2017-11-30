@@ -98,9 +98,9 @@ console.log("Please Select which Option you'd like")
         var array = enteredCoins.split(" ");        
         //convert array!! to coin objects
         var coins = convertStringArrayToCoinObjectArray(array)
-        var sum = addUpCoins.determineCoinSum(coins)
+        var sum = parseFloat(addUpCoins.determineCoinSum(coins).toFixed(2))
         var rejectedCoinsArray = convertStringArrayToRejectedCoinObjectArray(rejectedCoins)
-        var priceRemaining = subtractEnteredMoneyFromPrice(sum, price)
+        var priceRemaining = parseFloat(subtractEnteredMoneyFromPrice(sum, price)).toFixed(2)
         console.log("You have:", priceRemaining + " more to go...")
         if(checkIfPriceRemainingIsGreaterThanZero(priceRemaining)){
             console.log("Would you like to enter in more money? Or have your money returned? ")
