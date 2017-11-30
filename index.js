@@ -56,7 +56,7 @@ var product = {
 
 
 prompt.start();
-console.log("Welcome :) \n")
+console.log("Welcome to the Vending Machine :) \n")
 console.log("1. Cola: ", product.cola.value)
 console.log("2. Chips: ", product.chips.value)
 console.log("3. Candy: ", product.candy.value)
@@ -68,14 +68,28 @@ console.log("Please Select which Option you'd like")
     console.log('  Option: ' + result.option);
     console.log(selection.option)
     if(selection.option === '1'){
-        console.log("One Cola Coming righ up")
+        console.log("One Cola coming righ up...")
         selection.option = product.cola
     }
     else if(selection.option === '2'){
+        console.log("One Chips coming right up...")
         selection.option = product.chips
     }
     else if(selection.option === '3'){
+        console.log("One Candy coming right up...")        
         selection.option = product.candy   
     }
+
+    var string = selectProduct.displayPrice(selection.option)
+    console.log(string)
+
+    console.log("Please enter your coins all at once followed by a space, only quarter, dimes, and nickels accpeted at this time")
+
+    prompt.get(['option'], function (err, result) {
+        console.log('  Option: ' + result.option);
+        enteredCoins = result.option
+        var array = enteredCoins.split(" ");        
+        console.log(array)
+    })
 
   });
