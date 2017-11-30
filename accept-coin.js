@@ -9,19 +9,31 @@ When there are no coins inserted, the machine displays INSERT COIN. Rejected coi
 NOTE: The temptation here will be to create Coin objects that know their value. However, this is not how a real vending machine works. Instead, it identifies coins by their weight and size and then assigns a value to what was inserted. You will need to do something similar. This can be simulated using strings, constants, enums, symbols, or something of that nature.
 */
 
+var quarter = {
+    value: 0.25,
+    weight: 5.670,
+    size: 24.26
+}
+
+var nickel = {
+    value: 0.05,
+    weight: 5,
+    size: 21.21
+}
+
+var dime = {
+    value: 0.10,
+    weight: 2.268,
+    size: 17.91
+}
+
+var penny = {
+    value: 0.01,
+    weight: 2.5 ,
+    size: 19.05
+}
 
 
-var trueNickelSize = 21.21
-var trueNickelWeight= 5
-var trueNickelValue = 0.05
-
-var trueDimeSize = 17.91
-var trueDimeWeight = 2.268
-var trueDimeValue = 0.10
-
-var trueQuarterWeight = 5.670
-var trueQuarterSize = 24.26;
-var trueQuarterValue = 0.25
 
 var rejectedCoins = []
 
@@ -29,13 +41,13 @@ var rejectedCoins = []
 
 var acceptCoin = {
     isNickel: function(nickelSize, nickelWeight) {
-      return (nickelSize === trueNickelSize && nickelWeight === trueNickelWeight ? true : false);
+      return (nickelSize === nickel.size && nickelWeight === nickelWeight ? true : false);
     },
     isDime: function(dimeSize, dimeWeight){
-        return  (dimeSize === trueDimeSize && dimeWeight === trueDimeWeight ? true : false);
+        return  (dimeSize === dime.size && dimeWeight === dime.weight ? true : false);
     },
     isQuarter: function(quarterSize, quarterWeight){
-        return  (quarterSize === trueQuarterSize && quarterWeight === trueQuarterWeight ? true : false);
+        return  (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false);
     },
     isAcceptableCoin: function(coinSize, coinWeight){
         return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize,coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight) )

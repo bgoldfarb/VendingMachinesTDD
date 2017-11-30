@@ -1,46 +1,75 @@
-import { map, reduce, filter } from 'lodash'
+import { map, reduce, filter, curry} from 'lodash'
 
-/*When a valid coin is inserted the amount of the coin will be added to the current amount and the display will be updated. 
-When there are no coins inserted, the machine displays INSERT COIN. Rejected coins are placed in the coin return.
-*/
+var acceptCoin = ""
+acceptCoin = require('./accept-coin');
+
+
+var quarter = {
+    value: 0.25,
+    weight: 5.670,
+    size: 24.26
+}
+
+var nickel = {
+    value: 0.05,
+    weight: 5,
+    size: 21.21
+}
+
+var dime = {
+    value: 0.10,
+    weight: 2.268,
+    size: 17.91
+}
+
+var penny = {
+    value: 0.01,
+    weight: 2.5 ,
+    size: 19.05
+}
+
+var rejectedCoins = {
+    value: 0
+}
 
 var determineCoin = require('./accept-coin');
 
-var quarterValue = 0.25
-var dimeValue = 0.10
-var nickelValue = 0.05  
-var rejectedCoinsBin = []
-
-
 var addUpCoins = {
-    determineCoinSum: function(coins){
+
+    extractCoinValue: function(coin){
+        return coin.value
+    },
+
+
+    determineCoinSum: (function(coins){
         if(coins.length > 0){
-        var coinArray = map(coins, function(i){
-            if(i === quarterValue || i === dimeValue || i === nickelValue){
+        var acceptableCoinArray = filter(coins, function(i){
+            if(acceptCoin.isAcceptableCoin(i.size, i.weight)){
                 return i
             }
-            else {
-                return 0;
+            else{
+                rejectedCoins.value += i.value;
             }
         })
+        var sum = 0;
+        var valueArray = map(acceptableCoinArray, function(item){
+            return item.value
+        })
+        sum = reduce(valueArray, (sum, n) => sum + n, 0)
 
-var filteredSumArray = filter(sumArray, function(item){
-    return item != 0;
-})
-var sum = reduce(filteredSumArray, function(sum, order){
-    return sum + order;
-}, 0)
         return sum;
     }
     else{
-        return "INSERT COIN"
+        return "INSERT COINS"
     }
+}),
+
+returnRejectedCoins: function(){
+    return rejectedCoins.value
 }
 
 }
 
-addUpCoins.determineCoinSum([0.25, .05, .10, 0.10, 0.25, 0.01])
-// var hi = addUpCoins.determineCoinSum([])
-// console.log(hi)
+
 
 module.exports = addUpCoins
