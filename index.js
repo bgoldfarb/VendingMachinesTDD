@@ -7,13 +7,12 @@ var acceptCoin = require('./accept-coin');
 var addUpCoins = require('./add-up-coins');
 var selection = "";
 var enteredCoins = []
+var rejectedCoins = []
 var prompt = require('prompt');
+var price = 0;
+var selectedItemName = "";
 
-
-
-
-
-  var quarter = {
+var quarter = {
     value: 0.25,
     weight: 5.670,
     size: 24.26
@@ -35,6 +34,10 @@ var penny = {
     value: 0.01,
     weight: 2.5 ,
     size: 19.05
+}
+
+var dollar = {
+    value: 1.00
 }
 
 var product = {
@@ -70,18 +73,22 @@ console.log("Please Select which Option you'd like")
     if(selection.option === '1'){
         console.log("One Cola coming righ up...")
         selection.option = product.cola
+        selectedItemName = 'Cola'
     }
     else if(selection.option === '2'){
         console.log("One Chips coming right up...")
         selection.option = product.chips
+        selectedItemName = "Chips"
     }
     else if(selection.option === '3'){
         console.log("One Candy coming right up...")        
-        selection.option = product.candy   
+        selection.option = product.candy  
+        selectedItemName = "Candy" 
     }
 
     var string = selectProduct.displayPrice(selection.option)
     console.log(string)
+    price = (selection.option.value)
 
     console.log("Please enter your coins all at once followed by a space, only quarter, dimes, and nickels accpeted at this time")
 
@@ -89,7 +96,77 @@ console.log("Please Select which Option you'd like")
         console.log('  Option: ' + result.option);
         enteredCoins = result.option
         var array = enteredCoins.split(" ");        
-        console.log(array)
+        //convert array!! to coin objects
+        var coins = convertStringArrayToCoinObjectArray(array)
+        var sum = addUpCoins.determineCoinSum(coins)
+        var rejectedCoinsArray = convertStringArrayToRejectedCoinObjectArray(rejectedCoins)
+        var priceRemaining = subtractEnteredMoneyFromPrice(sum, price)
+        console.log("You have:", priceRemaining + " more to go...")
+        if(checkIfPriceRemainingIsGreaterThanZero(priceRemaining)){
+            console.log("Would you like to enter in more money? Or have your money returned? ")
+            prompt.get(['option'], function (err, result) {
+                console.log('  Option: ' + result.option);
+            })
+        }
+        else{
+            console.log("Dispensing: ", selectedItemName +"... Enjoy!" )
+
+        }
+
+
+
+
+
+
+
     })
 
   });
+
+
+  var checkIfPriceRemainingIsGreaterThanZero = function(priceRemaining){
+      return priceRemaining > 0 ? true : false;
+  }
+
+
+  var convertStringArrayToCoinObjectArray = function(stringArray){
+      var coinArray = []
+    for(var i = 0; i < stringArray.length; i++){
+        if(stringArray[i] === 'dime'){
+            coinArray.push(dime);
+        }
+        else if(stringArray[i] === 'quarter'){
+            coinArray.push(quarter);
+        }
+        else if(stringArray[i] === 'nickel'){
+            coinArray.push(nickel);
+        }
+        else{
+            rejectedCoins.push(stringArray[i])
+        }
+    }
+    return coinArray
+  }
+
+  var convertStringArrayToRejectedCoinObjectArray = function(stringArray){
+    var coinArray = []
+  for(var i = 0; i < stringArray.length; i++){
+      if(stringArray[i] === 'penny'){
+          coinArray.push(penny);
+      }
+      else if(stringArray[i] === 'dollar'){
+          coinArray.push(dollar);
+      }
+      else{
+          rejectedCoins.push(stringArray[i])
+      }
+  }
+  return coinArray
+}
+
+var subtractEnteredMoneyFromPrice = function(sum, price){
+    console.log("What you have put in: ", sum)
+    console.log("What you want: ", price)
+    return price - sum;
+
+}

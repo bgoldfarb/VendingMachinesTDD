@@ -60,7 +60,7 @@ var addUpCoins = {
         return sum;
     }
     else{
-        return "INSERT COINS"
+        return "INSERT COINS and maybe you'll get the foods!"
     }
 }),
 
