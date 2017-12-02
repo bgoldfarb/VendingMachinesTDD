@@ -29,7 +29,7 @@ var dime = {
 
 var penny = {
     value: 0.01,
-    weight: 2.5 ,
+    weight: 2.5,
     size: 19.05
 }
 
@@ -40,17 +40,17 @@ var rejectedCoins = []
 
 
 var acceptCoin = {
-    isNickel: function(nickelSize, nickelWeight) {
-      return (nickelSize === nickel.size && nickelWeight === nickelWeight ? true : false);
+    isNickel: function (nickelSize, nickelWeight) {
+        return (nickelSize === nickel.size && nickelWeight === nickelWeight ? true : false);
     },
-    isDime: function(dimeSize, dimeWeight){
-        return  (dimeSize === dime.size && dimeWeight === dime.weight ? true : false);
+    isDime: function (dimeSize, dimeWeight) {
+        return (dimeSize === dime.size && dimeWeight === dime.weight ? true : false);
     },
-    isQuarter: function(quarterSize, quarterWeight){
-        return  (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false);
+    isQuarter: function (quarterSize, quarterWeight) {
+        return (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false);
     },
-    isAcceptableCoin: function(coinSize, coinWeight){
-        return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize,coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight) )
+    isAcceptableCoin: function (coinSize, coinWeight) {
+        return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize, coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight))
     }
 };
 

@@ -1,4 +1,9 @@
-import { map, reduce, filter, curry} from 'lodash'
+import {
+    map,
+    reduce,
+    filter,
+    curry
+} from 'lodash'
 
 var acceptCoin = ""
 acceptCoin = require('./accept-coin');
@@ -24,7 +29,7 @@ var dime = {
 
 var penny = {
     value: 0.01,
-    weight: 2.5 ,
+    weight: 2.5,
     size: 19.05
 }
 
@@ -36,37 +41,35 @@ var determineCoin = require('./accept-coin');
 
 var addUpCoins = {
 
-    extractCoinValue: function(coin){
+    extractCoinValue: function (coin) {
         return coin.value
     },
 
 
-    determineCoinSum: (function(coins){
-        if(coins.length > 0){
-        var acceptableCoinArray = filter(coins, function(i){
-            if(acceptCoin.isAcceptableCoin(i.size, i.weight)){
-                return i
-            }
-            else{
-                rejectedCoins.value += i.value;
-            }
-        })
-        var sum = 0;
-        var valueArray = map(acceptableCoinArray, function(item){
-            return item.value
-        })
-        sum = reduce(valueArray, (sum, n) => sum + n, 0)
+    determineCoinSum: (function (coins) {
+        if (coins.length > 0) {
+            var acceptableCoinArray = filter(coins, function (i) {
+                if (acceptCoin.isAcceptableCoin(i.size, i.weight)) {
+                    return i
+                } else {
+                    rejectedCoins.value += i.value;
+                }
+            })
+            var sum = 0;
+            var valueArray = map(acceptableCoinArray, function (item) {
+                return item.value
+            })
+            sum = reduce(valueArray, (sum, n) => sum + n, 0)
 
-        return sum;
-    }
-    else{
-        return "INSERT COINS and maybe you'll get the foods!"
-    }
-}),
+            return sum;
+        } else {
+            return "INSERT COINS and maybe you'll get the foods!"
+        }
+    }),
 
-returnRejectedCoins: function(){
-    return rejectedCoins.value
-}
+    returnRejectedCoins: function () {
+        return rejectedCoins.value
+    }
 
 }
 

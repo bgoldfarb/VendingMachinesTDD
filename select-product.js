@@ -1,4 +1,9 @@
-import { map, reduce, filter, curry} from 'lodash'
+import {
+    map,
+    reduce,
+    filter,
+    curry
+} from 'lodash'
 
 var selectProduct = "";
 var runningTotal = 0;
@@ -24,12 +29,12 @@ var dime = {
 
 var penny = {
     value: 0.01,
-    weight: 2.5 ,
+    weight: 2.5,
     size: 19.05
 }
 
 var product = {
-    cola:  {
+    cola: {
         value: 1.00
     },
     chips: {
@@ -44,14 +49,14 @@ var product = {
 
 var selectProduct = {
 
-    returnProduct: function(product){
+    returnProduct: function (product) {
         return product
     },
 
-    displayPrice: function(selectedProduct){
+    displayPrice: function (selectedProduct) {
         var string = "Amount owed: " + selectedProduct.value;
         return string
-        
+
     }
 
 
@@ -66,5 +71,3 @@ var selectedProduct = product.candy;
 
 
 module.exports = selectProduct;
-
-
