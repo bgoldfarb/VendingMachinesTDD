@@ -18,6 +18,7 @@ var enteredCoins = []
 var rejectedCoins = []
 var prompt = require('prompt');
 var price = 0;
+var sum = 0;
 var selectedItemName = "";
 
 var quarter = {
@@ -79,7 +80,7 @@ prompt.get(['option'], function (err, result) {
     console.log('  Option: ' + result.option);
     console.log(selection.option)
     if (selection.option === '1') {
-        console.log("One Cola coming righ up...")
+        console.log("One Cola coming right up...")
         selection.option = product.cola
         selectedItemName = 'Cola'
     } else if (selection.option === '2') {
@@ -92,6 +93,11 @@ prompt.get(['option'], function (err, result) {
         selectedItemName = "Candy"
     }
 
+
+
+
+
+
     var string = selectProduct.displayPrice(selection.option)
     console.log(string)
     price = (selection.option.value)
@@ -99,21 +105,54 @@ prompt.get(['option'], function (err, result) {
     console.log("Please enter your coins all at once followed by a space, only quarter, dimes, and nickels accpeted at this time")
 
     prompt.get(['option'], function (err, result) {
-        console.log('  Option: ' + result.option);
         enteredCoins = result.option
         var array = enteredCoins.split(" ");
-        //convert array!! to coin objects
         var coins = convertCoins.convertStringArrayToCoinObjectArray(array)
-        var sum = parseFloat(addUpCoins.determineCoinSum(coins).toFixed(2))
+        sum += parseFloat(addUpCoins.determineCoinSum(coins).toFixed(2))
         var rejectedCoinsArray = convertCoins.convertStringArrayToRejectedCoinObjectArray(rejectedCoins)
         var priceRemaining = parseFloat(subtractEnteredMoneyFromPrice(sum, price)).toFixed(2)
         console.log("You have:", priceRemaining + " more to go...")
+
+
+
+
+
         if (checkIfPriceRemainingIsGreaterThanZero(priceRemaining)) {
             console.log("Would you like to enter in more money? Or have your money returned? ")
+            console.log("Please answer 'yes' or 'y' to enter in more of your hard earned $$$ ")
+            console.log("If not....I guess I'll give you back your monies :/")
+            
             prompt.get(['option'], function (err, result) {
                 console.log('  Option: ' + result.option);
+                var answer = result.option;
+                if(answer === 'y' || answer === 'yes'){
+                    console.log("How much do you want to add?")
+                    console.log("Please enter your coins all at once followed by a space, only quarter, dimes, and nickels accpeted at this time")                                            
+                    prompt.get(['option'], function (err, result) {
+                        console.log('  Option: ' + result.option); 
+                        //NOW JUST add new coins to sum
+                        var newCoins = result.option
+                        var newArray = newCoins.split(" ")
+                        var coins = convertCoins.convertStringArrayToCoinObjectArray(newArray)
+                        sum += parseFloat(addUpCoins.determineCoinSum(coins).toFixed(2))
+                        var rejectedCoinsArray = convertCoins.convertStringArrayToRejectedCoinObjectArray(rejectedCoins)
+                        var priceRemaining = parseFloat(subtractEnteredMoneyFromPrice(sum, price)).toFixed(2)
+                        console.log("You have:", priceRemaining + " more to go...")
+                    })
+                }
+                else{
+                    console.log("Here you go!")
+                    console.log("Here is your: ", sum)
+
+                }
             })
-        } else {
+        } 
+        
+        
+        
+        
+        
+        else {
             console.log("Dispensing: ", selectedItemName + "... Enjoy!")
 
         }
@@ -122,11 +161,13 @@ prompt.get(['option'], function (err, result) {
 });
 
 
-var checkIfPriceRemainingIsGreaterThanZero = function (priceRemaining) {
-    return priceRemaining > 0 ? true : false;
-}
 
 
+
+
+
+
+var checkIfPriceRemainingIsGreaterThanZero =  (priceRemaining) => priceRemaining > 0 ? true : false;
 var subtractEnteredMoneyFromPrice = function (sum, price) {
     console.log("What you have put in: ", sum)
     console.log("What you want: ", price)
