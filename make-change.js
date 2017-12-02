@@ -2,6 +2,7 @@
 var acceptCoin = ""
 var addUpCoins = ""
 var convertCoins = ""
+var selectProduct = "";
 
 var quarter = {
     value: 0.25,
@@ -45,35 +46,30 @@ var product = {
 acceptCoin = require('./accept-coin');
 addUpCoins = require('./add-up-coins');
 convertCoins = require('./convert-string-to-object-coin-array');
+selectProduct = require('./select-product')
 
 
 
 var makeChange = {
 
 
-    returnProperAmountOwedToMachine: (selection) => {
-        var coins = convertCoins.convertStringArrayToCoinObjectArray(selection)
+    returnAmountPutIntoMachine: (coinsInserted) => {
+        var coins = convertCoins.convertStringArrayToCoinObjectArray(coinsInserted)
         var sum = addUpCoins.determineCoinSum(coins)
         return parseFloat(sum).toFixed(2);
     },
 
-
-    checkIfPriceRemainingIsGreaterThanZero: (priceRemaining) => priceRemaining > 0 ? true : false,
-
-
-    subtractEnteredMoneyFromPrice: (sum, price) => {
-
-        console.log("What you have put in: ", sum)
-        console.log("What you want: ", price)
-        return price - sum;
-
-    }
+    returnAmountOwedToMachine: (selection) => selection.value,
 
 
+    checkIfPriceRemainingIsGreaterThanZero: (priceRemaining) => priceRemaining < 0 ? true : false,
+
+
+    subtractEnteredMoneyFromPrice: (sum, price) =>  price - sum
 }
 
 
-var selection = 'quarter dime dime dime'
-var array = selection.split(" ")
-makeChange.returnProperAmountOwedToMachine(array)
+// var selection = 'quarter dime dime dime'
+// var array = selection.split(" ")
+// makeChange.returnAmountPutIntoMachine(array)
 module.exports = makeChange;

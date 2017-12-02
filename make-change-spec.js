@@ -27,6 +27,19 @@ var penny = {
     size: 19.05
 }
 
+var product = {
+    cola: {
+        value: 1.00
+    },
+    chips: {
+        value: 0.50
+
+    },
+    candy: {
+        value: 0.65
+    }
+}
+
 //As a vendor
 //I want customers to receive correct change
 //So that they will use the vending machine again
@@ -45,6 +58,7 @@ describe('All tests', () => {
     
     beforeEach(function(){
         makeChange = require('./make-change');
+        
     
     })
 
@@ -55,13 +69,49 @@ describe('All tests', () => {
     });
 
     describe('should test functionality of make-change', function(){
-        it('should return the proper amount owed to machine', function(){
-            var selection = 'quarter dime dime dime'
-            var array = selection.split(" ")
+        it('should return the proper amount entered to machine', function(){
+            var enteredCoins = 'quarter dime dime dime'
+            var array = enteredCoins.split(" ")
             var expectedSum = '0.55'
-            var actualSum = makeChange.returnProperAmountOwedToMachine(array)
+            var actualSum = makeChange.returnAmountPutIntoMachine(array)
             expect(expectedSum).to.equal(actualSum)
         })
+
+        it('should not count pennies or other change not accepted', function(){
+            var selection = 'quarter penny penny dollar dime dime dime'
+            var array = selection.split(" ")
+            var expectedSum = '0.55'
+            var actualSum = makeChange.returnAmountPutIntoMachine(array)
+            expect(expectedSum).to.equal(actualSum)
+        })
+
+        it('should return the amount of coins owed to the machine', function(){
+            var selection = product.cola
+            var expectedSum = product.cola.value
+            var actualSum = makeChange.returnAmountOwedToMachine(selection)
+            expect(actualSum).to.equal(expectedSum)
+
+        })
+
+        it('should return amount of coins to user if user enters too much money', function(){
+            var enteredCoins = 'quarter quarter quarter dime dime dime'
+            var coinArray = enteredCoins.split(" ")
+            var amountEntered = makeChange.returnAmountPutIntoMachine(coinArray)
+
+            var selection = product.cola
+            var amountDue = makeChange.returnAmountOwedToMachine(selection)
+
+
+            var expectedReturn = 0.05
+            var difference = parseFloat(makeChange.subtractEnteredMoneyFromPrice(amountEntered,amountDue)).toFixed(2)
+            var toReturnToCustomer = (makeChange.checkIfPriceRemainingIsGreaterThanZero(difference) ? difference *-1 : 0)
+            expect(toReturnToCustomer).to.eql(expectedReturn)            
+
+
+        })
+ 
+
+
     })
 
 })
