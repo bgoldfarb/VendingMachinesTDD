@@ -66,8 +66,5 @@ var selectProduct = {
 
 var selectedProduct = product.candy;
 
-// var string = selectProduct.displayPrice(selectedProduct)
-// console.log(string)
-
 
 module.exports = selectProduct;

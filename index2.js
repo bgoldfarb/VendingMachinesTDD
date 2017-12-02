@@ -67,66 +67,36 @@ var product = {
 var readline = require('readline');
 var rl = readline.createInterface(process.stdin, process.stdout);
 
-var promptStart = function(){
+var promptStart = function () {
     console.log("Welcome to the Vending Machine :) \n")
     console.log("1. Cola: ", product.cola.value)
     console.log("2. Chips: ", product.chips.value)
     console.log("3. Candy: ", product.candy.value)
 }
 
-var promptForSelection = function(){
+var promptForSelection = function () {
     var result = "";
-    rl.question("Please select an option from 1 to 3: ", (result) => {    
-    if (result === '1') {
-        console.log("One Cola coming right up...")
-        result = product.cola
-       
-    } else if (result === '2') {
-        console.log("One Chips coming right up...")
-        result = product.chips
-       
-    } else if (result=== '3') {
-        console.log("One Candy coming right up...")
-        result = product.candy
-        
-    }
-})
+    rl.question("Please select an option from 1 to 3: ", (result) => {
+        if (result === '1') {
+            console.log("One Cola coming right up...")
+            result = product.cola
+
+        } else if (result === '2') {
+            console.log("One Chips coming right up...")
+            result = product.chips
+
+        } else if (result === '3') {
+            console.log("One Candy coming right up...")
+            result = product.candy
+        }
+    })
     return result;
 
 }
-
-
-
-
-
-
 promptStart()
 var result = promptForSelection()
 
-// var userSelection = promptForSelection()
-// //console.log("Please enter your coins all at once followed by a space, only quarter, dimes, and nickels accpeted at this time")
-// var string = selectProduct.displayPrice(selection.option)
-// console.log(string)
-// price = (selection.option.value)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var checkIfPriceRemainingIsGreaterThanZero =  (priceRemaining) => priceRemaining > 0 ? true : false;
+var checkIfPriceRemainingIsGreaterThanZero = (priceRemaining) => priceRemaining > 0 ? true : false;
 var subtractEnteredMoneyFromPrice = function (sum, price) {
     console.log("What you have put in: ", sum)
     console.log("What you want: ", price)
