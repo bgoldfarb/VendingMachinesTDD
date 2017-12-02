@@ -42,6 +42,7 @@ var product = {
     }
 }
 
+var rejectedCoins = []
 
 
 var convertCoins = {
