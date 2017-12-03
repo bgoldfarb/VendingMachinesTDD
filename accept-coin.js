@@ -39,19 +39,15 @@ var rejectedCoins = []
 
 
 
-var acceptCoin = {
-    isNickel: function (nickelSize, nickelWeight) {
-        return (nickelSize === nickel.size && nickelWeight === nickel.weight ? true : false);
-    },
-    isDime: function (dimeSize, dimeWeight) {
-        return (dimeSize === dime.size && dimeWeight === dime.weight ? true : false);
-    },
-    isQuarter: function (quarterSize, quarterWeight) {
-        return (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false);
-    },
-    isAcceptableCoin: function (coinSize, coinWeight) {
-        return (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize, coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight))
-    }
+var acceptCoin = { 
+    
+    isNickel: (nickelSize, nickelWeight) => (nickelSize === nickel.size && nickelWeight === nickel.weight ? true : false)
+    ,
+    isDime:  (dimeSize, dimeWeight) => (dimeSize === dime.size && dimeWeight === dime.weight ? true : false)
+    ,
+    isQuarter:  (quarterSize, quarterWeight) => (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false)
+    ,
+    isAcceptableCoin: (coinSize, coinWeight) => (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize, coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight))
 };
 
 
