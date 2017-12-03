@@ -34,19 +34,11 @@ var penny = {
 }
 
 
+var acceptCoin = {
 
-var rejectedCoins = []
-
-
-
-var acceptCoin = { 
-    
-    isNickel: (nickelSize, nickelWeight) => (nickelSize === nickel.size && nickelWeight === nickel.weight ? true : false)
-    ,
-    isDime:  (dimeSize, dimeWeight) => (dimeSize === dime.size && dimeWeight === dime.weight ? true : false)
-    ,
-    isQuarter:  (quarterSize, quarterWeight) => (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false)
-    ,
+    isNickel: (nickelSize, nickelWeight) => (nickelSize === nickel.size && nickelWeight === nickel.weight ? true : false),
+    isDime: (dimeSize, dimeWeight) => (dimeSize === dime.size && dimeWeight === dime.weight ? true : false),
+    isQuarter: (quarterSize, quarterWeight) => (quarterSize === quarter.size && quarterWeight === quarterWeight ? true : false),
     isAcceptableCoin: (coinSize, coinWeight) => (acceptCoin.isNickel(coinSize, coinWeight) || acceptCoin.isDime(coinSize, coinWeight) || acceptCoin.isQuarter(coinSize, coinWeight))
 };
 
