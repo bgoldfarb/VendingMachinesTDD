@@ -29,18 +29,8 @@ var penny = {
     size: 19.05
 }
 
-var product = {
-    cola: {
-        value: 1.00
-    },
-    chips: {
-        value: 0.50
+var product = require('./product')
 
-    },
-    candy: {
-        value: 0.65
-    }
-}
 
 
 var selectProduct = {

@@ -26,21 +26,7 @@ var dollar = {
     value: 1.00
 }
 
-var product = {
-    cola: {
-        value: 1.00,
-        name: 'Cola'
-    },
-    chips: {
-        value: 0.50,
-        name: 'Chips'
-
-    },
-    candy: {
-        value: 0.65,
-        name: 'Candy'
-    }
-}
+var product = require('./product')
 
 var rejectedCoins = []
 

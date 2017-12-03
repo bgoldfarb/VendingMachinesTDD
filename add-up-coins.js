@@ -41,12 +41,8 @@ var determineCoin = require('./accept-coin');
 
 var addUpCoins = {
 
-    extractCoinValue: function (coin) {
-        return coin.value
-    },
-
-
-    determineCoinSum: (function (coins) {
+    extractCoinValue:  (coin) =>  coin.value ,
+    determineCoinSum:  (coins) => {
         if (coins.length > 0) {
             var acceptableCoinArray = filter(coins, function (i) {
                 if (acceptCoin.isAcceptableCoin(i.size, i.weight)) {
@@ -63,9 +59,11 @@ var addUpCoins = {
 
             return sum;
         } else {
-            return "INSERT COINS and maybe you'll get the foods!"
+            return "INSERT COINS"
         }
-    }),
+    },
+
+
 
     returnRejectedCoins: function () {
         return rejectedCoins.value

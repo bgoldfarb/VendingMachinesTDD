@@ -27,32 +27,11 @@ var penny = {
     size: 19.05
 }
 
-var product = {
-    cola: {
-        value: 1.00
-    },
-    chips: {
-        value: 0.50
-
-    },
-    candy: {
-        value: 0.65
-    }
-
-
-}
-
-//As a vendor
-//I want customers to receive correct change
-//So that they will use the vending machine again
-//When a product is selected that costs less than the amount of money in the machine, 
-//then the remaining amount is placed in the coin return.
-
-
-
 var coinsToBeInserted = [quarter, nickel, dime, dime, quarter]
 var coinsToBeInsertedWithBadCoins= [quarter, penny, dime, dime, quarter, nickel]
 var noCoinsToBeInserted = []
+var product = require('./product')
+
 
 
 
@@ -89,6 +68,7 @@ describe('All tests', () => {
 
         it('should return the amount of coins owed to the machine', function(){
             var selection = product.cola
+            console.log(product)
             var expectedSum = product.cola.value
             var actualSum = makeChange.returnAmountOwedToMachine(selection)
             expect(actualSum).to.equal(expectedSum)
