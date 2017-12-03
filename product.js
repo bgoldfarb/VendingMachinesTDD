@@ -6,7 +6,7 @@ module.exports = {
     },
     chips: {
         value: 0.50,
-        quantity:1
+        quantity: 1
 
     },
     candy: {
@@ -14,5 +14,3 @@ module.exports = {
         quantity: 2
     }
 }
-
-

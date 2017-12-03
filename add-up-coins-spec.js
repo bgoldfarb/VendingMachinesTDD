@@ -2,35 +2,11 @@
 var expect = require('chai').expect;
 
 var addUpCoins = ""
-
-var quarter = {
-    value: 0.25,
-    weight: 5.670,
-    size: 24.26
-}
-
-var nickel = {
-    value: 0.05,
-    weight: 5,
-    size: 21.21
-}
-
-var dime = {
-    value: 0.10,
-    weight: 2.268,
-    size: 17.91
-}
-
-var penny = {
-    value: 0.01,
-    weight: 2.5 ,
-    size: 19.05
-}
+var coins = require('./coins')
 
 
-
-var coinsToBeInserted = [quarter, nickel, dime, dime, quarter]
-var coinsToBeInsertedWithBadCoins= [quarter, penny, dime, dime, quarter, nickel]
+var coinsToBeInserted = [coins.quarter, coins.nickel, coins.dime, coins.dime, coins.quarter]
+var coinsToBeInsertedWithBadCoins= [coins.quarter, coins.penny, coins.dime, coins.dime, coins.quarter, coins.nickel]
 var noCoinsToBeInserted = []
 
 
@@ -54,9 +30,9 @@ describe('Coin Sum Functionality', function() {
 
 
     it('should extract all values from coin objects', function(){
-        var quarterValue = addUpCoins.extractCoinValue(quarter)
-        var dimeValue = addUpCoins.extractCoinValue(dime)
-        var nickelValue = addUpCoins.extractCoinValue(nickel)
+        var quarterValue = addUpCoins.extractCoinValue(coins.quarter)
+        var dimeValue = addUpCoins.extractCoinValue(coins.dime)
+        var nickelValue = addUpCoins.extractCoinValue(coins.nickel)
         expect(quarterValue).to.be.equal(0.25)
         expect(dimeValue).to.be.equal(0.10)
         expect(nickelValue).to.be.equal(0.05)

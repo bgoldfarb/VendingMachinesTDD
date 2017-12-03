@@ -1,7 +1,6 @@
 'use strict';
 var expect = require('chai').expect;
 
-//nickels are 21.21mm, 5g
 var acceptCoin = "";
 
 

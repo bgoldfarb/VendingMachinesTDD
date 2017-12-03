@@ -5,30 +5,7 @@ var display = "";
 var flag = "";
 selectProduct = require('./select-product');
 
-var quarter = {
-    value: 0.25,
-    weight: 5.670,
-    size: 24.26
-}
-
-var nickel = {
-    value: 0.05,
-    weight: 5,
-    size: 21.21
-}
-
-var dime = {
-    value: 0.10,
-    weight: 2.268,
-    size: 17.91
-}
-
-var penny = {
-    value: 0.01,
-    weight: 2.5,
-    size: 19.05
-}
-
+var coins = require('./coins')
 var product = require('./product')
 
 

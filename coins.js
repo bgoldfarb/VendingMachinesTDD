@@ -22,6 +22,10 @@ module.exports = {
         value: 0.01,
         weight: 2.5,
         size: 19.05
+    },
+
+    dollar: {
+        value: 1.00
     }
 
 

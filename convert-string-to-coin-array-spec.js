@@ -3,34 +3,12 @@ var expect = require('chai').expect;
 
 var convertCoins = ""
 
-var quarter = {
-    value: 0.25,
-    weight: 5.670,
-    size: 24.26
-}
-
-var nickel = {
-    value: 0.05,
-    weight: 5,
-    size: 21.21
-}
-
-var dime = {
-    value: 0.10,
-    weight: 2.268,
-    size: 17.91
-}
-
-var penny = {
-    value: 0.01,
-    weight: 2.5,
-    size: 19.05
-}
+var coins = require('./coins')
 
 
 
-var coinsToBeInserted = [quarter, nickel, dime, dime, quarter]
-var coinsToBeInsertedWithBadCoins = [quarter, penny, dime, dime, quarter, nickel]
+var coinsToBeInserted = [coins.quarter, coins.nickel, coins.dime, coins.dime, coins.quarter]
+var coinsToBeInsertedWithBadCoins = [coins.quarter, coins.penny, coins.dime, coins.dime, coins.quarter, coins.nickel]
 var noCoinsToBeInserted = []
 
 
@@ -50,8 +28,8 @@ describe('All tests', () => {
 
     describe('test functionality of converString functions', function () {
 
-        var coinObject = [dime, dime, dime]
-        var rejectedCoinObject = [penny, penny]
+        var coinObject = [coins.dime, coins.dime, coins.dime]
+        var rejectedCoinObject = [coins.penny, coins.penny]
         it('should return a coin object with two dimes', function () {
             var stringArray = 'dime dime dime'
             var array = stringArray.split(" ");
