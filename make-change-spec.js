@@ -38,6 +38,8 @@ var product = {
     candy: {
         value: 0.65
     }
+
+
 }
 
 //As a vendor
@@ -93,6 +95,7 @@ describe('All tests', () => {
 
         })
 
+        //MAKE CHANGE
         it('should return amount of coins to user if user enters too much money', function(){
             var enteredCoins = 'quarter quarter quarter dime dime dime'
             var coinArray = enteredCoins.split(" ")
@@ -106,11 +109,20 @@ describe('All tests', () => {
             var difference = parseFloat(makeChange.subtractEnteredMoneyFromPrice(amountEntered,amountDue)).toFixed(2)
             var toReturnToCustomer = (makeChange.checkIfPriceRemainingIsGreaterThanZero(difference) ? difference *-1 : 0)
             expect(toReturnToCustomer).to.eql(expectedReturn)            
+        })
 
+
+        //RETURN COINS
+        it('should return the total amount of coins put in', function(){
+            var display = "INSERT COIN"
+            var enteredCoins = 'quarter quarter quarter dime dime dime'
+            var coinArray = enteredCoins.split(" ")
+            var amountEntered = makeChange.returnAmountPutIntoMachine(coinArray)
+            var returnedCoins = makeChange.returnTotalCoinsToCustomer(amountEntered)
+            expect(returnedCoins).to.equal(amountEntered)
+            expect(display).to.equal(makeChange.updateDisplay())
 
         })
- 
-
 
     })
 

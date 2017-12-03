@@ -3,6 +3,8 @@ var acceptCoin = ""
 var addUpCoins = ""
 var convertCoins = ""
 var selectProduct = "";
+var display = "";
+var flag = "";
 
 var quarter = {
     value: 0.25,
@@ -65,11 +67,31 @@ var makeChange = {
     checkIfPriceRemainingIsGreaterThanZero: (priceRemaining) => priceRemaining < 0 ? true : false,
 
 
-    subtractEnteredMoneyFromPrice: (sum, price) =>  price - sum
+    subtractEnteredMoneyFromPrice: (sum, price) =>  price - sum,
+
+
+    returnTotalCoinsToCustomer:(coinsInserted) =>  {
+        flag = "Customer wants coins returned"
+        return coinsInserted
+
+
+    },
+
+    updateDisplay: () => {
+
+        if(flag === 'Customer wants coins returned'){
+            display = "INSERT COIN"
+        }
+
+        return display;
+        
+    }
+
+
 }
 
 
 // var selection = 'quarter dime dime dime'
 // var array = selection.split(" ")
 // makeChange.returnAmountPutIntoMachine(array)
-module.exports = makeChange;
+module.exports = makeChange; 

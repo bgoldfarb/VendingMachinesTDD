@@ -52,15 +52,17 @@ describe('select-product-exists', function() {
 
 describe('Select Product', function(){
     it('should select the right product', function(){
+        var display = "THANK YOU"
         var selection = product.candy
         expect(selectProduct.returnProduct(selection)).to.equal(product.candy)
+        expect(display).to.equal(selectProduct.updateDisplay())
     })
 
     it('should display proper amount owed', function(){
         var selectedProduct = product.candy
         var expectedString = "Amount owed: " + 0.65;
         var resultString = selectProduct.displayPrice(selectedProduct)
-        expect(resultString).to.eql(expectedString)
+        expect(resultString).to.equal(expectedString)
         
         
     })
