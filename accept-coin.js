@@ -41,7 +41,7 @@ var rejectedCoins = []
 
 var acceptCoin = {
     isNickel: function (nickelSize, nickelWeight) {
-        return (nickelSize === nickel.size && nickelWeight === nickelWeight ? true : false);
+        return (nickelSize === nickel.size && nickelWeight === nickel.weight ? true : false);
     },
     isDime: function (dimeSize, dimeWeight) {
         return (dimeSize === dime.size && dimeWeight === dime.weight ? true : false);
