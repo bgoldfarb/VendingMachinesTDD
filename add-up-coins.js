@@ -2,12 +2,14 @@ import {
     map,
     reduce,
     filter,
-    chain
+    chain,
+    partition,
 } from 'lodash'
 
 var acceptCoin = require('./accept-coin');
+var coins = require('./coins')
 var rejectedCoins = {
-    value: 0
+
 }
 
 var determineCoin = require('./accept-coin');
@@ -15,13 +17,14 @@ var sum = 0;
 var addUpCoins = {
 
     extractCoinValue: (coin) => coin.value,
-
-    /*Then you can split all your coins into two arrays, accepted and rejected. Then you can sum of the value of the rejected array for that value
-    */
     determineCoinSum: (coins) => {
+
+        var splitCoins = partition(coins, (i) => acceptCoin.isAcceptableCoin(i.size, i.weight))
+        rejectedCoins = ((splitCoins[1][0]))
+
         if (coins.length > 0) {
             sum = chain(coins)
-                .filter((i) => (acceptCoin.isAcceptableCoin(i.size, i.weight) ? i : false ))
+                .filter((i) => (acceptCoin.isAcceptableCoin(i.size, i.weight) ? i : false))
                 .map((item) => item.value)
                 .reduce((sum, n) => sum + n, 0)
                 .value()
@@ -34,10 +37,16 @@ var addUpCoins = {
 
 
     returnRejectedCoins: function () {
-        return rejectedCoins.value
+        return rejectedCoins
     }
 
 }
+
+var coinsToBeInsertedWithBadCoins = [coins.quarter, coins.penny, coins.dime, coins.dime, coins.quarter, coins.nickel]
+addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+var badCoins = addUpCoins.returnRejectedCoins()
+console.log(badCoins)
+console.log(coins.penny)
 
 
 

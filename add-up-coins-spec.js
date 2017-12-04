@@ -43,12 +43,14 @@ describe('All tests', () => {
             expect(sum).to.be.equal(0.75)
         })
 
-        it('should return all the bad coins', function () {
-            var coins = addUpCoins.returnRejectedCoins()
-            expect(coins).to.be.equal(0.01)
+        it('should return the correct amount of rejected coins', function(){
+            var sum = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+            var rejectedCoins = addUpCoins.returnRejectedCoins()
+            console.log(rejectedCoins)
+            expect(rejectedCoins).to.equal(coins.penny)
         })
-
 
     });
 
 })
+
