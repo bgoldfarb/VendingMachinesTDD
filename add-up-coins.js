@@ -42,11 +42,11 @@ var addUpCoins = {
 
 }
 
-var coinsToBeInsertedWithBadCoins = [coins.quarter, coins.penny, coins.dime, coins.dime, coins.quarter, coins.nickel]
-addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
-var badCoins = addUpCoins.returnRejectedCoins()
-console.log(badCoins)
-console.log(coins.penny)
+// var coinsToBeInsertedWithBadCoins = [coins.quarter, coins.penny, coins.dime, coins.dime, coins.quarter, coins.nickel]
+// addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
+// var badCoins = addUpCoins.returnRejectedCoins()
+// console.log(badCoins)
+// console.log(coins.penny)
 
 
 

@@ -18,7 +18,7 @@ var selectProduct = {
         
     },
 
-    displayPrice: function (selectedProduct) {
+    displayPrice:  (selectedProduct) => {
         var string = "Amount owed: " + selectedProduct.value;
         return string
     },
@@ -27,7 +27,6 @@ var selectProduct = {
         if(flag === 'Customer wants a product'){
             display = "THANK YOU"
         }
-        
         return display;
     }
 

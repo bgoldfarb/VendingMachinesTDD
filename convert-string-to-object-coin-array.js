@@ -7,7 +7,7 @@ var rejectedCoins = []
 
 var convertCoins = {
 
-    convertStringArrayToCoinObjectArray: function (stringArray) {
+    convertStringArrayToCoinObjectArray: (stringArray)  => {
         var coinArray = []
         for (var i = 0; i < stringArray.length; i++) {
             if (stringArray[i] === 'dime') {
@@ -23,7 +23,7 @@ var convertCoins = {
         return coinArray
     },
 
-    convertStringArrayToRejectedCoinObjectArray: function (stringArray) {
+    convertStringArrayToRejectedCoinObjectArray:  (stringArray) => {
         var coinArray = []
         for (var i = 0; i < stringArray.length; i++) {
             if (stringArray[i] === 'penny') {
