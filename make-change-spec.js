@@ -45,7 +45,6 @@ describe('All tests', () => {
 
         it('should return the amount of coins owed to the machine', function(){
             var selection = product.cola
-            console.log(product)
             var expectedSum = product.cola.value
             var actualSum = makeChange.returnAmountOwedToMachine(selection)
             expect(actualSum).to.equal(expectedSum)

@@ -1,43 +1,40 @@
+let runningTotal = 0;
+let display = "";
+let flag = "";
+let selectProduct = require('./select-product');
 
-var runningTotal = 0;
-var display = "";
-var flag = "";
-var selectProduct = require('./select-product');
-
-var coins = require('./coins')
-var product = require('./product')
-
+let coins = require('./coins')
+let product = require('./product')
 
 
-var selectProduct = {
+
+selectProduct = {
 
     returnProduct: (product) => {
         flag = "Customer wants a product"
         product.quantity += -1
         return product
-        
+
     },
 
-    displayPrice:  (selectedProduct) => {
-        var string = "Amount owed: " + selectedProduct.value;
+    displayPrice: (selectedProduct) => {
+        let string = "Amount owed: " + selectedProduct.value;
         return string
     },
 
     updateDisplay: () => {
-        if(flag === 'Customer wants a product'){
+        if (flag === 'Customer wants a product') {
             display = "THANK YOU"
-        }
-        else if(flag === 'Product Not Available'){
+        } else if (flag === 'Product Not Available') {
             display = "SOLD OUT"
         }
         return display;
     },
 
     checkIfProductIsStillAvailable: (quantity) => {
-        if(quantity < 0){
+        if (quantity < 0) {
             flag = "Product Not Available"
-        }
-        else{
+        } else {
             display = "THANK YOU"
         }
     }
@@ -47,7 +44,7 @@ var selectProduct = {
 
 
 
-var selectedProduct = product.candy;
+let selectedProduct = product.candy;
 
 
 module.exports = selectProduct;

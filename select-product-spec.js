@@ -1,13 +1,10 @@
 'use strict'
 var expect = require('chai').expect;
-var selectProduct = "";
+var selectProduct = require('./select-product');;
 var product = require('./product')
 var coins = require('./coins')
 var sinon = require('sinon')
 
-beforeEach(function(){
-    selectProduct = require('./select-product');
-})
 
 describe('select-product-exists', () => {
     it('should exist', function() {

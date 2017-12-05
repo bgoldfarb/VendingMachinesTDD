@@ -1,15 +1,15 @@
-var coins = require('./coins')
+let coins = require('./coins')
 
-var product = require('./product')
+let product = require('./product')
 
-var rejectedCoins = []
+let rejectedCoins = []
 
 
-var convertCoins = {
+let convertCoins = {
 
     convertStringArrayToCoinObjectArray: (stringArray)  => {
-        var coinArray = []
-        for (var i = 0; i < stringArray.length; i++) {
+        let coinArray = []
+        for (let i = 0; i < stringArray.length; i++) {
             if (stringArray[i] === 'dime') {
                 coinArray.push(coins.dime);
             } else if (stringArray[i] === 'quarter') {
@@ -24,8 +24,8 @@ var convertCoins = {
     },
 
     convertStringArrayToRejectedCoinObjectArray:  (stringArray) => {
-        var coinArray = []
-        for (var i = 0; i < stringArray.length; i++) {
+        let coinArray = []
+        for (let i = 0; i < stringArray.length; i++) {
             if (stringArray[i] === 'penny') {
                 coinArray.push(coins.penny);
             } else if (stringArray[i] === 'dollar') {
