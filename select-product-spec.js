@@ -3,6 +3,7 @@ var expect = require('chai').expect;
 var selectProduct = "";
 var product = require('./product')
 var coins = require('./coins')
+var sinon = require('sinon')
 
 beforeEach(function(){
     selectProduct = require('./select-product');
