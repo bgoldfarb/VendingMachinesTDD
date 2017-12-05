@@ -31,4 +31,14 @@ describe('Select Product', () => {
         
         
     })
+
+    //SOLD OUT
+    it('should tell me the product I have selected is out of stock', () => {
+        var selectedProduct = product.candy
+        var returnedProduct = selectProduct.returnProduct(selectedProduct)
+        var returnedProduct2 = selectProduct.returnProduct(selectedProduct)
+        var expectedString = "SOLD OUT"
+        selectProduct.checkIfProductIsStillAvailable(returnedProduct2.quantity)
+        expect(expectedString).to.equal(selectProduct.updateDisplay())
+    })
 })

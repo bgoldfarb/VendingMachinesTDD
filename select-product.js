@@ -14,6 +14,7 @@ var selectProduct = {
 
     returnProduct: (product) => {
         flag = "Customer wants a product"
+        product.quantity += -1
         return product
         
     },
@@ -27,7 +28,19 @@ var selectProduct = {
         if(flag === 'Customer wants a product'){
             display = "THANK YOU"
         }
+        else if(flag === 'Product Not Available'){
+            display = "SOLD OUT"
+        }
         return display;
+    },
+
+    checkIfProductIsStillAvailable: (quantity) => {
+        if(quantity < 0){
+            flag = "Product Not Available"
+        }
+        else{
+            display = "THANK YOU"
+        }
     }
 
 
