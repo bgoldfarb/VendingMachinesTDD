@@ -1,9 +1,8 @@
 
-var selectProduct = "";
 var runningTotal = 0;
 var display = "";
 var flag = "";
-selectProduct = require('./select-product');
+var selectProduct = require('./select-product');
 
 var coins = require('./coins')
 var product = require('./product')
