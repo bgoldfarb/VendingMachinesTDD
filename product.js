@@ -10,7 +10,7 @@ module.exports = {
 
     },
     candy: {
-        value: 0.65,
+        value: 0.33,
         quantity: 2
     }
 }

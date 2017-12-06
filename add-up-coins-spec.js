@@ -3,6 +3,8 @@ var expect = require('chai').expect;
 
 var addUpCoins = require('./add-up-coins');
 var coins = require('./coins')
+var sinon = require('sinon');
+
 
 
 var coinsToBeInserted = [coins.quarter, coins.nickel, coins.dime, coins.dime, coins.quarter]
@@ -46,8 +48,13 @@ describe('All tests', () => {
         it('should return the correct amount of rejected coins', function(){
             var sum = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
             var rejectedCoins = addUpCoins.returnRejectedCoins()
-            console.log(rejectedCoins)
             expect(rejectedCoins).to.equal(coins.penny)
+        //var mock = sinon.mock(coins)
+           var expectation = sinon.expectation.create([addUpCoins.determineCoinSum]);
+           expectation.atLeast(1)
+           expectation.verify()
+            
+            
         })
 
     });

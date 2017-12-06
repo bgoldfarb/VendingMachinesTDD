@@ -35,10 +35,9 @@ let addUpCoins = {
     },
 
 
+    returnRejectedCoins: () => rejectedCoins
 
-    returnRejectedCoins: function () {
-        return rejectedCoins
-    }
+
 
 }
 
