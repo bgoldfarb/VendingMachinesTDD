@@ -26,8 +26,13 @@ describe('All tests', () => {
     describe('Coin Sum Functionality', function () {
 
         beforeEach(() => {
-             mock = sinon.mock(coins)
-    
+            mock = sinon.mock(coins)
+            mock.restore()
+
+        })
+
+        afterEach(() => {
+            mock.restore()
         })
 
 
@@ -50,7 +55,12 @@ describe('All tests', () => {
             expect(sum).to.be.equal(0.75)
         })
 
-        //Using a spy in place of a real function
+        it('should call the callback', () => {
+            let callbackSpy = sinon.spy()
+            addUpCoins.sinonStuff(callbackSpy)
+            expect(callbackSpy).to.have.been.called.once
+        })
+
 
     });
 

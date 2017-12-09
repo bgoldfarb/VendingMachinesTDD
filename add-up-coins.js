@@ -14,6 +14,7 @@ let rejectedCoins = {
 
 let determineCoin = require('./accept-coin');
 let sum = 0;
+
 let addUpCoins = {
 
     extractCoinValue: (coin) => coin.value,
@@ -35,7 +36,11 @@ let addUpCoins = {
     },
 
 
-    returnRejectedCoins: () => rejectedCoins
+    returnRejectedCoins: () => rejectedCoins,
+
+    sinonStuff: (callback) => {
+        callback()
+    }
 
 
 
