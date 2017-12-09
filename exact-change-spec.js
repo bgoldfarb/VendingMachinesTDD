@@ -33,7 +33,7 @@ describe('Test: ', () => {
                expect(canBeBroken).to.equal(exepected)
             })
 
-            it('should check if product selected can be broken into change', function () {
+            it('should check if product selected cannot be broken into change', function () {
                 var productSelected = selectProduct.returnProduct(product.candy)
                 var canBeBroken = exactChange.brokenIntoChange(productSelected)
                 var exepected = false;

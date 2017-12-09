@@ -4,6 +4,7 @@ var expect = require('chai').expect;
 var addUpCoins = require('./add-up-coins');
 var coins = require('./coins')
 var sinon = require('sinon');
+var rewire = require("rewire")
 
 
 
@@ -13,6 +14,13 @@ var noCoinsToBeInserted = []
 
 
 describe('All tests', () => {
+
+
+
+    beforeEach(() => {
+        
+
+    })
 
 
     describe('add-up-coin-exists', function () {
@@ -45,19 +53,8 @@ describe('All tests', () => {
             expect(sum).to.be.equal(0.75)
         })
 
-        it('should return the correct amount of rejected coins', function(){
-            var sum = addUpCoins.determineCoinSum(coinsToBeInsertedWithBadCoins)
-            var rejectedCoins = addUpCoins.returnRejectedCoins()
-            expect(rejectedCoins).to.equal(coins.penny)
-        //var mock = sinon.mock(coins)
-           var expectation = sinon.expectation.create([addUpCoins.determineCoinSum]);
-           expectation.atLeast(1)
-           expectation.verify()
-            
-            
-        })
+        //Using a spy in place of a real function
 
     });
 
 })
-
