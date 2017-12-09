@@ -36,11 +36,7 @@ let addUpCoins = {
     },
 
 
-    returnRejectedCoins: () => rejectedCoins,
-
-    sinonStuff: (callback) => {
-        callback()
-    }
+    returnRejectedCoins: () => rejectedCoins
 
 
 

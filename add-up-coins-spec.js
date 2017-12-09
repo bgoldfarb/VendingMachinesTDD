@@ -4,9 +4,6 @@ var expect = require('chai').expect;
 var addUpCoins = require('./add-up-coins');
 var coins = require('./coins')
 var sinon = require('sinon');
-var rewire = require("rewire")
-
-
 
 var coinsToBeInserted = [coins.quarter, coins.nickel, coins.dime, coins.dime, coins.quarter]
 var coinsToBeInsertedWithBadCoins = [coins.quarter, coins.penny, coins.dime, coins.dime, coins.quarter, coins.nickel]
@@ -55,13 +52,24 @@ describe('All tests', () => {
             expect(sum).to.be.equal(0.75)
         })
 
+        //Sinon Spies
         it('should call the callback', () => {
-            let callbackSpy = sinon.spy()
-            addUpCoins.sinonStuff(callbackSpy)
-            expect(callbackSpy).to.have.been.called.once
+            //Creates an annonymous function that records arguments
+            var annonSpy = sinon.spy()
+            //Spies on the provided function
+            //var functionSpy = sinon.spy("addUpCoins.determineCoinSum")
+
+            //Creates a spy for object.method and replaces original method with spy
+            var objectMethodSpy = sinon.spy(addUpCoins, "determineCoinSum")
+            objectMethodSpy.withArgs(coinsToBeInsertedWithBadCoins)
+            objectMethodSpy.determineCoinSum(coinsToBeInsertedWithBadCoins)
+            assert(objectMethodSpy.withArgs(coinsToBeInsertedWithBadCoins).calledOnce)
+            
         })
 
 
-    });
+
+
+    })
 
 })
