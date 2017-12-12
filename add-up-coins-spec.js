@@ -18,8 +18,6 @@ describe('All tests', () => {
         });
     });
 
-
-
     describe('Coin Sum Functionality', function () {
 
         beforeEach(() => {
@@ -53,23 +51,15 @@ describe('All tests', () => {
         })
 
         //Sinon Spies
-        it('should call the callback', () => {
+        it('should only call the determineCoinSum method once', () => {
             //Creates an annonymous function that records arguments
             var annonSpy = sinon.spy()
-            //Spies on the provided function
-            //var functionSpy = sinon.spy("addUpCoins.determineCoinSum")
-
             //Creates a spy for object.method and replaces original method with spy
             var objectMethodSpy = sinon.spy(addUpCoins, "determineCoinSum")
             objectMethodSpy.withArgs(coinsToBeInsertedWithBadCoins)
             objectMethodSpy.determineCoinSum(coinsToBeInsertedWithBadCoins)
             assert(objectMethodSpy.withArgs(coinsToBeInsertedWithBadCoins).calledOnce)
-            
         })
-
-
-
-
     })
 
 })
