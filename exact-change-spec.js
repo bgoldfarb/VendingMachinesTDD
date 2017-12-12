@@ -35,6 +35,12 @@ describe('Test: ', () => {
 
     describe('Test functionality of exact-change module', function () {
 
+        beforeEach(function() {
+            
+
+
+          });
+
         it('should check if product selected can be broken into change', function () {
             var productSelected = selectProduct.returnProduct(product.cola)
             var canBeBroken = exactChange.brokenIntoChange(productSelected)
@@ -52,21 +58,24 @@ describe('Test: ', () => {
         it('should only call the returnProduct function once', function () {
             var spy = sinon.spy(selectProduct, 'returnProduct')
             var productSelected = selectProduct.returnProduct(productSelectedMock)
+            spy.restore()            
             sinon.assert.calledOnce(spy);
         })
 
         it('should only call the brokenIntoChange function once', function () {
-            var spy = sinon.spy(exactChange, 'brokenIntoChange')
-            var canBeBroken = exactChange.brokenIntoChange(productSelectedMock)
+            let spy = sinon.spy(exactChange, 'brokenIntoChange')
+            let canBeBroken = exactChange.brokenIntoChange(productSelectedMock)
+            spy.restore()
             sinon.assert.calledOnce(spy);
+            
         })
 
         it('should check the exactChange function is called with the right args', function () {
-            var spy = sinon.spy(exactChange, 'brokenIntoChange')
-            var canBeBroken = exactChange.brokenIntoChange(productSelectedMock)
+            let spy = sinon.spy(exactChange, 'brokenIntoChange')
+            let canBeBroken = exactChange.brokenIntoChange(productSelectedMock)
+            spy.restore()            
             sinon.assert.calledWith(spy, productSelectedMock);
         })
-
 
 
 
